@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        background: #f0f0f0;
+    }
+    .a{
+        position: relative;
+        text-align: center;
+        margin-top: 80px;
+        background-color:rgba(255, 0, 0, 0.4);
+        cursor: pointer;
+    }
+    button{
+        padding:10px 20px;
+        font-size: 18px;
+        margin:10px;
+        cursor:pointer;
+        box-shadow: 0px 5px 5px black;
+    }
+    button:active{
+        box-shadow: none;
+        transform: translateY(5px);
+    }
+    #no{
+        visibility: hidden;
+    }
+#n{
+    position: absolute;
+    top:139px;
+    left:303.5px;
+}
+.dag{
+    font-size: 35px;
+    color:blue;
+}
+
+#img.myA{
+ height: 450px;
+ width: 550px;
+}
+#te{
+text-align: center;
+}
+#myIdd{
+    visibility: hidden;
+}
+</style>
+<body>
+    <div class="a">
+    <h1>Do you like me?</h1>
+    <button id="y" class="f">Yes</button>
+    <button id="no">No</button>
+</div>
+    <button id="n">No</button>
+
+ <p class="none" id ="none"></p>
+<h1 id="te"></h1>
+ <img src="" alt="" id="img">
+
+ <video id="myIdd" width="590px" height="440px" controls>
+<source src="happycat.mp4" type="video/mp4">
+
+ </video>
+<script>
+    let count = 1;
+    const yesButton = document.getElementById("y");
+    const video = document.getElementById('myIdd');
+    let non = document.getElementById("none");
+    const noB = document.getElementById("n");
+    noB.addEventListener("click", () => {
+       const maxW = window.innerWidth - noB.offsetWidth;
+       const maxH = window.innerHeight - noB.offsetHeight;
+        const a = Math.floor(Math.random() * maxW);
+        const b = Math.floor(Math.random() * maxH);
+        noB.style.position = 'absolute';
+        noB.style.left = a + "px";
+        noB.style.top = b + "px";
+        count++;
+        var imgs = document.getElementById("img");
+        imgs.classList.add("myA");
+        if(count >= 2){
+            const myImg = ["Cep.jpg", "Ds.jpeg", "Eyee.jpeg", "Gapo.jpg", "Hibi.jpg", "Onab.jpg"]
+            let myI = Math.floor(Math.random() * 6); 
+            let myim = myImg[myI];
+            const myText = ["ZZZZZZZZZ", "UWU", "Sigurado?", "Ah, habo mo?", "Ayos lang", "Awts GEGE"]
+             
+            let myTe = myText[myI];
+            var text = document.getElementById("te");
+            text.innerHTML = myTe;
+            var img = document.getElementById("img");
+              img.src = myim;
+    
+ }
+    });
+    
+    yesButton.addEventListener("click", () => {
+        document.getElementById("myIdd").style.visibility = "visible";
+        document.getElementById("img").remove();
+        noB.style.left = "303.5px";
+        noB.style.top = "139px";
+        noB.style.pointerEvents = "none";
+        yesButton.style.pointerEvents = "none";
+        video.play();
+    });
+ 
+  
+</script>
+</body>
+</html>
