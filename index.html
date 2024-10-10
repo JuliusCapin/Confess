@@ -79,7 +79,8 @@ text-align: center;
 
  </video>
 <script>
-    let count = 1;
+    let lastIndex = -1;
+    let count = 0; 
     const yesButton = document.getElementById("y");
     const video = document.getElementById('myIdd');
     let non = document.getElementById("none");
@@ -96,11 +97,18 @@ text-align: center;
         var imgs = document.getElementById("img");
         imgs.classList.add("myA");
         if(count >= 2){
-            const myImg = ["Cep.jpg", "Ds.jpeg", "Eyee.jpeg", "Gapo.jpg", "Hibi.jpg", "Onab.jpg"]
-            let myI = Math.floor(Math.random() * 6); 
+            const myImg = ["Cep.jpg", "Ds.jpeg", "Eyee.jpeg", "Gapo.jpg", "Hibi.jpg", "Onab.jpg", "jonel.jpg", "johnny.jpg"]           
+            const myText = ["ZZZZZZZZZ", "UWU", "Sigurado?", "Ah, habo mo?", "Ayos lang", "Awts GEGE", "nak, tayo ka d'yan", "ehe!"]
+
+            let myI;
+
+           do {
+             myI = Math.floor(Math.random() * myImg.length);
+           } while (myI === lastIndex);
+            
+            lastIndex = myI;
             let myim = myImg[myI];
-            const myText = ["ZZZZZZZZZ", "UWU", "Sigurado?", "Ah, habo mo?", "Ayos lang", "Awts GEGE"]
-             
+            
             let myTe = myText[myI];
             var text = document.getElementById("te");
             text.innerHTML = myTe;
